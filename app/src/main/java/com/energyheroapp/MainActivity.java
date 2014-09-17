@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
                     Intent intent = new Intent(mContext, LoginActivity.class);
                     startActivity(intent);
                 } else {
-                    Intent intent = new Intent(mContext, HeroShotActivity.class);
+                    Intent intent = new Intent(mContext, TestActivity.class);
                     startActivity(intent);
                 }
 

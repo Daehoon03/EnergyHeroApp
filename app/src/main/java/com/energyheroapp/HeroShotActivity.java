@@ -37,6 +37,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 
 /**
  * Created by 다ㅣ훈03 on 2014-08-11.
@@ -118,8 +119,14 @@ public class HeroShotActivity extends Activity{
         try
         {
             HttpClient client = new DefaultHttpClient();
+
+            HashMap<String, String> headers = new HashMap<String, String>();
+            AuthHelper.getAuthorizationHeader(headers);
+
             String postURL = "http://" + AuthHelper.getDomainHostName() + "/Mobile/UploadPhoto";
             HttpPost post = new HttpPost(postURL);
+            post.addHeader("Authorization", headers.get("Authorization"));
+
             File file = new File(sourceFileUri);
             FileBody bin = new FileBody(file);
             MultipartEntity reqEntity = new MultipartEntity(HttpMultipartMode.BROWSER_COMPATIBLE);
